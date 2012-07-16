@@ -10,6 +10,10 @@ public class ListaInt {
 
     private int[] lista;
 
+    private Sort ordenar;
+
+    private Search buscar;
+
     public ListaInt(int[] lista) {
         this.lista = lista;
     }
@@ -32,8 +36,8 @@ public class ListaInt {
      * Ordena la lista de enteros con el metodo pasado por parametros.
      * @param metodo 
      */
-    public void sort(Sort metodo) {
-        metodo.sort(lista);
+    public void sort() {
+        ordenar.sort(lista);
     }
 
     /**
@@ -41,11 +45,39 @@ public class ListaInt {
      * @param metodo
      * @param elementoBuscado 
      */
-    public void search(Search metodo, int elementoBuscado) {
+    public void search(int elementoBuscado) {
         System.out.println();
-        if (metodo.contains(lista, elementoBuscado))
+        if (buscar.contains(lista, elementoBuscado))
             System.out.println("El elemento buscado esta en la lista");
         else
             System.out.println("El elemento buscado no esta en la lista");
+    }
+
+    /**
+     * @return the ordenar
+     */
+    public Sort getSort() {
+        return ordenar;
+    }
+
+    /**
+     * @param ordenar the ordenar to set
+     */
+    public void setSort(Sort ordenar) {
+        this.ordenar = ordenar;
+    }
+
+    /**
+     * @return the buscar
+     */
+    public Search getSearch() {
+        return buscar;
+    }
+
+    /**
+     * @param buscar the buscar to set
+     */
+    public void setSearch(Search buscar) {
+        this.buscar = buscar;
     }
 }

@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * Vlidador.java
  *
  * Created on 30-mar-2012, 14:06:38
@@ -18,6 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class Validador extends javax.swing.JFrame {
 
+    private FieldValidator fieldValidator = new FieldValidator();
     /** Creates new form Vlidador */
     public Validador() {
         initComponents();
@@ -85,14 +81,14 @@ public class Validador extends javax.swing.JFrame {
         );
         jpDatosLayout.setVerticalGroup(
             jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDatosLayout.createSequentialGroup()
-                .addContainerGap(86, Short.MAX_VALUE)
+            .addGroup(jpDatosLayout.createSequentialGroup()
+                .addGap(85, 85, 85)
                 .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jbValidar)
-                .addGap(56, 56, 56))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jpDatosLayout.createSequentialGroup()
                     .addContainerGap()
@@ -103,7 +99,7 @@ public class Validador extends javax.swing.JFrame {
                     .addGroup(jpDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jlDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jtfDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(134, Short.MAX_VALUE)))
+                    .addContainerGap(88, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -127,16 +123,22 @@ public class Validador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbValidarActionPerformed
-        FieldValidator emailValidator = new EmailValidator();
-        FieldValidator documentoValidator = new DocumentoValidator();
-        FieldValidator provinciaValidator = new ProvinciaValidator();
+        fieldValidator = new FieldValidator();
 
-        String emailV = emailValidator.validate(jtfEmail.getText().toUpperCase());
-        String documentoV = documentoValidator.validate(jtfDocumento.getText().toUpperCase());
-        String provinciaV = provinciaValidator.validate(jtfProvincia.getText().toUpperCase());
+        // Validacion de email.
+        fieldValidator.setValidador(new FieldEmail());
+        String email = fieldValidator.validate(jtfEmail.getText());
+
+        // Validacion de documento.
+        fieldValidator.setValidador(new FieldDocumento());
+        String documento = fieldValidator.validate(jtfDocumento.getText());
+
+        // Validacion de provincia.
+        fieldValidator.setValidador(new FieldProvincia());
+        String provincia = fieldValidator.validate(jtfProvincia.getText());
 
         JOptionPane.showMessageDialog(null,
-                    "Email: "+emailV+"\nDocumento: "+documentoV+"\nProvincia: "+provinciaV,
+                    "Email: "+email+"\nDocumento: "+documento+"\nProvincia: "+provincia,
                     "Validacion",
                     JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jbValidarActionPerformed
@@ -147,6 +149,7 @@ public class Validador extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
+            @Override
             public void run() {
                 new Validador().setVisible(true);
             }

@@ -10,4 +10,9 @@ public class SecureOracleConn implements Conn {
     public void connect() {
         System.out.println("Conectado a Oracle en forma segura");
     }
+
+    @Override
+    public void query() {
+        System.out.println("Consultando en Oracle de forma segura");
+    }
 }

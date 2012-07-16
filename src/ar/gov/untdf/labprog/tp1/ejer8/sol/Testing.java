@@ -18,6 +18,7 @@ public class Testing {
         l.printMe();
 
         // Se busca un entero en la lista con BinarySearch.
-        l.search(new SequentialSearch(), 34);
+        l.setSearch(new SequentialSearch());
+        l.search(34);
     }
 }

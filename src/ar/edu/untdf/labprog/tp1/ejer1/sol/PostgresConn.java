@@ -10,4 +10,9 @@ public class PostgresConn implements Conn {
     public void connect() {
         System.out.println("Conectado a Postgres");
     }
+
+    @Override
+    public void query() {
+        System.out.println("Consulta en Postgres");
+    }
 }

@@ -10,4 +10,9 @@ public class MySQLConn implements Conn {
     public void connect() {
         System.out.println("Conectado a MySQL");
     }
+
+    @Override
+    public void query() {
+        System.out.println("Consulta en MySQL");
+    }
 }

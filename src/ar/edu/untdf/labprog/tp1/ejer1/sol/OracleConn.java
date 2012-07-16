@@ -10,4 +10,9 @@ public class OracleConn implements Conn {
     public void connect() {
         System.out.println("Conectado a Oracle");
     }
+
+    @Override
+    public void query() {
+        System.out.println("Consulta en Oracle");
+    }
 }

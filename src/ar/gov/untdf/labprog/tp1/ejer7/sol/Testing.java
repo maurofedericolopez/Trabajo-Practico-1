@@ -13,7 +13,8 @@ public class Testing {
         l.printMe();
 
         // Se ordena la lista con Quicksort.
-        l.sort(new Quicksort());
+        l.setSort(new Quicksort());
+        l.sort();
         l.printMe();
     }
 }

@@ -10,4 +10,9 @@ public class SecurePostgresConn implements Conn {
     public void connect() {
         System.out.println("Conectado a Postgres en forma segura");
     }
+
+    @Override
+    public void query() {
+        System.out.println("Consultando en Postgres de forma segura");
+    }
 }

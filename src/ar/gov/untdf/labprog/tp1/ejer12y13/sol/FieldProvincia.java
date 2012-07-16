@@ -1,24 +1,32 @@
 package ar.gov.untdf.labprog.tp1.ejer12y13.sol;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  *
  * @author Mauro Federico Lopez
  */
-public class ProvinciaValidator extends FieldValidator {
+public class FieldProvincia implements Validator {
 
-    private static ArrayList<String> provincias = new ArrayList<String>();
+    private String[] provincias = {"BUENOS AIRES","CORDOBA","SANTA FE","MENDOZA",
+        "TUCUMAN","ENTRE RIOS","SALTA","MISIONES",
+        "CHACO","CORRIENTES","SANTIAGO DEL ESTERO",
+        "SAN JUAN","JUJUY","RIO NEGRO","NEUQUEN","FORMOSA",
+        "CHUBUT","SAN LUIS","CATAMARCA","LA RIOJA",
+        "LA PAMPA","SANTA CRUZ","TIERRA DEL FUEGO"};
+
     @Override
-    public boolean isValid(String provincia) {
-        cargarSet();
-        if (provincias.contains(provincia))
+    public Boolean isValid(String cadena) {
+        String provincia = cadena.toUpperCase();
+        List<String> lista = Arrays.asList(provincias);
+        if (lista.contains(provincia))
             return true;
         else
             return false;
     }
 
-    private void cargarSet() {
+    /* private void cargarSet() {
         provincias.add("BUENOS AIRES");
         provincias.add("CORDOBA");
         provincias.add("SANTA FE");
@@ -42,5 +50,6 @@ public class ProvinciaValidator extends FieldValidator {
         provincias.add("LA PAMPA");
         provincias.add("SANTA CRUZ");
         provincias.add("TIERRA DEL FUEGO");
-    }
+    }*/
+
 }
