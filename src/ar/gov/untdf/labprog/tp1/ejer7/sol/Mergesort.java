@@ -4,9 +4,7 @@ package ar.gov.untdf.labprog.tp1.ejer7.sol;
  *
  * @author Mauro Federico Lopez
  */
-public class Mergesort implements Sort{
-
-    private int[] lista;
+public class Mergesort extends Sort{
 
     private void mergesort(int low, int high,int[] helper) {		
         if (low < high) {
@@ -19,32 +17,32 @@ public class Mergesort implements Sort{
 
     private void merge(int low, int middle, int high,int [] helper) {
         for (int i = low; i <= high; i++) {
-            helper[i] = lista[i];
+            helper[i] = listaInt.getLista()[i];
 	} // fin del for
 	int i = low;
 	int j = middle + 1;
 	int k = low;
 	while (i <= middle && j <= high) {
             if (helper[i] <= helper[j]) {
-                lista[k] = helper[i];
+                listaInt.getLista()[k] = helper[i];
 		i++;
             } // fin del if
             else {
-                lista[k] = helper[j];
+                listaInt.getLista()[k] = helper[j];
 		j++;
             } // fin del else
             k++;
 	} // fin del while
 	while (i <= middle) {
-            lista[k] = helper[i];
+            listaInt.getLista()[k] = helper[i];
             k++;
             i++;
 	} // fin del while
     }
 
     @Override
-    public void sort(int[] lista) {
-        this.lista = lista;
-        mergesort(0,lista.length-1, new int[lista.length]);
+    public void sort() {
+        mergesort(0,listaInt.getLista().length-1, new int[listaInt.getLista().length]);
     }
+
 }

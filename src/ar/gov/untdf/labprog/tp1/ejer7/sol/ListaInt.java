@@ -24,7 +24,7 @@ public class ListaInt {
     public void printMe() {
         System.out.println();
         System.out.print("(");
-        for(int x:lista){
+        for(int x:getLista()){
             System.out.print(x);
             System.out.print(" ");
         }
@@ -37,7 +37,7 @@ public class ListaInt {
      * @param metodo 
      */
     public void sort() {
-        ordenar.sort(lista);
+        ordenar.sort();
     }
 
     /**
@@ -47,7 +47,7 @@ public class ListaInt {
      */
     public void search(int elementoBuscado) {
         System.out.println();
-        if (buscar.contains(lista, elementoBuscado))
+        if (buscar.contains(elementoBuscado))
             System.out.println("El elemento buscado esta en la lista");
         else
             System.out.println("El elemento buscado no esta en la lista");
@@ -65,6 +65,7 @@ public class ListaInt {
      */
     public void setSort(Sort ordenar) {
         this.ordenar = ordenar;
+        this.ordenar.setListaInt(this);
     }
 
     /**
@@ -79,5 +80,20 @@ public class ListaInt {
      */
     public void setSearch(Search buscar) {
         this.buscar = buscar;
+        this.buscar.setListaInt(this);
+    }
+
+    /**
+     * @return the lista
+     */
+    public int[] getLista() {
+        return lista;
+    }
+
+    /**
+     * @param lista the lista to set
+     */
+    public void setLista(int[] lista) {
+        this.lista = lista;
     }
 }
