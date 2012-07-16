@@ -1,25 +1,21 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ar.edu.untdf.labprog.tp1.ejer4.sol;
 
-import ar.edu.untdf.labprog.tp1.ejer2.sol.SQLFactory;
-import ar.edu.untdf.labprog.tp1.ejer2.sol.SQLFactoryMethod;
+import ar.edu.untdf.labprog.tp1.ejer2.sol.Conn;
+import ar.edu.untdf.labprog.tp1.ejer2.sol.Sql;
 
 /**
  *
- * @author Mauro
+ * @author Mauro Federico Lopez
  */
 public class Testing {
 
     public static void main(String[] args) {
-        SQLFactoryMethod factoria = new SQLFactory();
+        Sql unSql;
+        Conn unaConexion;
 
-        // Crear una conexion MsSQLServer.
-        ar.edu.untdf.labprog.tp1.ejer2.sol.Conn conexion = factoria.createConnection("mssql");
-
-        conexion.connect();
-        conexion.query();
+        // MsSQLServer
+        unSql = new MsSQLServerFactoryMethod();
+        unaConexion = unSql.createConnection();
+        unaConexion.query();
   }
 }

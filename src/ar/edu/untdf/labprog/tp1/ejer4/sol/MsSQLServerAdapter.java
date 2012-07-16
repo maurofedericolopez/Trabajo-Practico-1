@@ -8,8 +8,8 @@ import ar.edu.untdf.labprog.tp1.ejer2.sol.Conn;
  */
 public class MsSQLServerAdapter implements Conn {
 
-    MsSQLServer ms = new MsSQLServer();
-    
+    private MsSQLServer ms = new MsSQLServer();
+
     @Override
     public void connect() {
         ms.getConnect();
@@ -19,4 +19,5 @@ public class MsSQLServerAdapter implements Conn {
     public void query() {
         ms.ExecuteQuery();
     }
+
 }
